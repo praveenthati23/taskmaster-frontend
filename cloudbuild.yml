@@ -1,0 +1,12 @@
+steps:
+  # SSH into frontend VM and deploy
+  - name: gcr.io/cloud-builders/gcloud
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        gcloud compute ssh frontend --zone=us-central1-a --command="
+          cd /var/www/taskmaster-frontend &&
+          git pull origin main &&
+          sudo systemctl reload nginx
+        "
