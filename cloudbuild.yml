@@ -9,8 +9,12 @@ steps:
       - -c
       - |
         gcloud compute ssh praveenkumar_thati23a@frontend --zone=us-central1-a --command="
-          cd /var/www/taskmaster-frontend &&
+          cd ~/taskmaster-frontend &&
           git fetch origin dev &&
           git reset --hard origin/dev &&
+          npm install &&
+          npm run build &&
+          sudo rm -rf /var/www/taskmaster-frontend/* &&
+          sudo cp -r build/* /var/www/taskmaster-frontend/ &&
           sudo systemctl reload nginx
         "
