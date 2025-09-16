@@ -7,6 +7,7 @@ steps:
       - |
         gcloud compute ssh frontend --zone=us-central1-a --command="
           cd /var/www/taskmaster-frontend &&
-          git pull origin main &&
+          git fetch origin dev &&
+          git reset --hard origin/dev &&
           sudo systemctl reload nginx
         "
