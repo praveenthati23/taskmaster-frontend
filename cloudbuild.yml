@@ -1,3 +1,6 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 steps:
   # SSH into frontend VM and deploy
   - name: gcr.io/cloud-builders/gcloud
